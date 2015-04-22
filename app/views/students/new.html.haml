@@ -1,0 +1,7 @@
+.row
+  .col-md-6
+    %h2 Add New Student
+  .col-md-6{:style=> "float: right; margin-top: 11px;"}
+    = link_to "Back to list", students_path, class: "btn btn-warning"
+
+= render partial: "form"

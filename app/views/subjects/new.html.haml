@@ -1,0 +1,7 @@
+.row
+  .col-md-6
+    %h2 Edit Subject Information
+  .col-md-6{:style=> "float: right; margin-top: 11px;"}
+    = link_to "Back to list", subjects_path, class: "btn btn-warning"
+
+= render partial: "form"

@@ -1,0 +1,10 @@
+%h2 Student Information
+
+.panel-default
+  .panel-heading
+    = @student.to_s
+  .panel-body 
+    %h2 Subjects
+    - @studentsubjects.each do |ss|
+      = ss.subject.title 
+      .br 

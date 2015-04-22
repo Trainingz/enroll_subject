@@ -1,0 +1,8 @@
+= simple_form_for @subject, defaults: { wrapper_html: { class: 'form-group' }, input_html: { class: 'form-control' } }, html: { multipart: true } do |f|
+
+  = f.input :level, :as => :select, :collection => Subject::LEVEL 
+  = f.input :code
+  = f.input :title
+
+
+  = f.submit  

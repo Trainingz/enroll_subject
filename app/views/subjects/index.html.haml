@@ -1,0 +1,25 @@
+.row 
+  .col-md-8
+    = link_to "Add Subject", new_subject_path, class: "btn btn-info"
+    = link_to "Add Student", new_student_path, class: "btn btn-info"
+    = link_to "Enroll Student", "#", class: "btn btn-success"
+  .col-md-4{:style => "margin-top: 4px;"}
+    = link_to "Back to Home", root_path, class: "btn btn-success"
+  
+%h2 List of Subjects
+%table.table.table-bordered
+  %thead
+    %tr
+      %th Code
+      %th Title
+      %th Level
+      %th Actions
+  %tbody
+    - @subjects.each do |s|
+      %tr
+        %td= s.code
+        %td= s.title
+        %td= s.level
+        %td
+          = link_to "Edit", edit_subject_path(s.id), class: "btn btn-info btn-xs"
+          = link_to "Delete", subject_path(s.id), data: { :confirm => "Are you sure?"}, :method => :delete, class: "btn btn-danger btn-xs"

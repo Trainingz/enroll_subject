@@ -1,0 +1,72 @@
+= link_to "Add Subject", new_subject_path, class: "btn btn-info"
+= link_to "Add Student", new_student_path, class: "btn btn-info"
+= link_to "Enroll Student", new_student_subject_path, class: "btn btn-success"
+
+
+.panel.panel-info
+  .panel-heading
+    Lists of Subjects
+  .panel-body
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Code
+          %th Title
+          %th Level
+          %th Actions
+      %tbody
+        - @subjects.each do |s|
+          %tr
+            %td= s.code
+            %td= s.title
+            %td= s.level
+            %td
+              = link_to "Edit", edit_subject_path(s.id), class: "btn btn-info btn-xs"
+              = link_to "Delete", subject_path(s.id), data: { :confirm => "Are you sure?"}, :method => :delete, class: "btn btn-danger btn-xs"
+
+.panel.panel-info
+  .panel-heading
+    Lists of Students
+  .panel-body
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Code
+          %th Year
+          %th Name
+          %th Actions
+      %tbody
+        - @students.each do |s|
+          %tr
+            %td= s.student_code
+            %td= s.year
+            %td
+              = s.first_name
+              = s.last_name
+            %td
+              = link_to "Show", student_path(s.id), class: "btn btn-success btn-xs"
+              = link_to "Edit", edit_student_path(s.id), class: "btn btn-info btn-xs"
+              = link_to "Delete", student_path(s.id), data: { :confirm => "Are you sure?"}, :method => :delete, class: "btn btn-danger btn-xs"
+
+.panel.panel-info
+  .panel-heading
+    Lists of Enrolled Students
+  .panel-body
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Name
+          %th Year
+          %th Subject
+          %th Actions
+      %tbody
+        - @studentsubjects.each do |ss|
+          %tr
+            %td
+              = ss.student.first_name
+              = ss.student.last_name
+            %td= ss.student.year
+            %td= ss.subject.title
+            %td
+              = link_to "Edit", edit_student_subject_path(ss.id), class: "btn btn-info btn-xs"
+              = link_to "Delete", student_subject_path(ss.id), data: { :confirm => "Are you sure?"}, :method => :delete, class: "btn btn-danger btn-xs"
